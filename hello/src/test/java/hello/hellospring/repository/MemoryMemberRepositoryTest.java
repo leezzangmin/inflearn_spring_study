@@ -34,7 +34,7 @@ class MemoryMemberRepositoryTest {
     }
 
     @Test
-    void findByName() {
+    void  findByName() {
     }
 
     @Test
