@@ -13,7 +13,7 @@ public class MemberService {
     public Long join(Member member) {
         Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m ->{
-            throw new IllegalStateException("이미 존재하는 회원입니다.")
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
         memberRepository.save(member);
         return member.getId();
