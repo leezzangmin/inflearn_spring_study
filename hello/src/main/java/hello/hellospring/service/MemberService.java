@@ -17,6 +17,7 @@ public class MemberService {
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+
     public Long join(Member member) {
         Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m ->{
