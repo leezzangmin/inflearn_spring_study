@@ -31,14 +31,30 @@ class MemoryMemberRepositoryTest {
 
     @Test
     void findById() {
+        Member member = new Member();
+        member.setName("spring");
+        repository.save(member);
+        Member result = repository.findById(member.getId()).get();
+
+        assertThat(result).isEqualTo(member);
     }
 
     @Test
     void  findByName() {
+        Member member = new Member();
+        member.setName("spring");
+        repository.save(member);
+        Member result = repository.findByName(member.getName()).get();
+        assertThat(result).isEqualTo(member);
     }
 
     @Test
     void findAll() {
+        Member member = new Member();
+        member.setName("spring");
+        repository.save(member);
+
+        assertThat(repository.findAll().size()).isEqualTo(1);
     }
 
 
