@@ -3,6 +3,7 @@ package hello.itemservice.web.validation;
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequestMapping("/validation/v1/items")
 @RequiredArgsConstructor
@@ -57,11 +59,12 @@ public class ValidationItemControllerV1 {
         if (item.getPrice()!=null && item.getQuantity()!=null ) {
             int result = item.getPrice() * item.getQuantity();
             if (result<10000) {
-                errors.put("global","가격x수량 은 10000원 이상"+String.valueOf(result));
+                errors.put("globalError","가격x수량 은 10000원 이상"+String.valueOf(result));
             }
         }
 
         if (!errors.isEmpty()) {
+            log.info("\n\n\nerrors = {}\n\n\n",errors);
             model.addAttribute("errors",errors);
             return "validation/v1/addForm";
         }
