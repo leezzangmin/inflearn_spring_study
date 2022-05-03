@@ -1,5 +1,6 @@
 package inflearn.jpa1;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,6 @@ public class Locker {
 
     private String name;
 
-    @OneToOne(mappedBy = "locker")
+    @OneToOne(mappedBy = "locker", cascade = CascadeType.ALL)
     private Member member;
 }
