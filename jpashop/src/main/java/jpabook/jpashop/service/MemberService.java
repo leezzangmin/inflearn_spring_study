@@ -3,23 +3,27 @@ package jpabook.jpashop.service;
 import java.util.List;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional //퍼블릭 메서드에 자동적용
+@RequiredArgsConstructor
 public class MemberService {
-    
-    private MemberRepository memberRepository;
 
-    @Autowired
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+    private final MemberRepository memberRepository;
+
+//    @Autowired
+//    public MemberService(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
+
+
+
+
 //회원가입, 회원전체조회
-
-
     public Long join(Member member) {
 
         validateDuplicateMember(member);
