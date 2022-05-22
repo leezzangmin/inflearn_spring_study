@@ -1,18 +1,16 @@
-package inflearn.jpa1;
+package inflearn.jpa1.join;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.ManyToOne;
 
 
 @Entity
-@Getter @Setter
-public class Member {
+
+public class Member_jointest {
 
     @Id
     @GeneratedValue
@@ -22,8 +20,12 @@ public class Member {
     @Column(name = "USERNAME", nullable = false)
     private String username;
 
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team_jointest teamJointest;
 
+
+    public static void main(String[] args) {
+
+    }
 }
